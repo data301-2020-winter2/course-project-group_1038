@@ -19,7 +19,7 @@ The data set we chose is this...
 
 - Jakob Hamilton: Ex-athlete and aspiring teacher!
 - Laura Kelly: Aspiring chemist and musician!
-- Kevin Provost: one sentence about you!
+- Kevin Provost: Game-dev enthusiast 
 
 ## References
 
