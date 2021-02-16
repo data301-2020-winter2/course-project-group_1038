@@ -1,7 +1,7 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=362204&assignment_repo_type=GroupAssignmentRepo)
-# Group 1038 - Cool Data Science Project
+# Group 1038 - Cool Data Science Chess Project
 
-Super interesting stuff.
+Let's see if we can learn something cool about chess!!!!! :D
 
 ## Milestones
 
@@ -23,4 +23,4 @@ The data set we chose is this...
 
 ## References
 
-{Add your stuff here}
+
