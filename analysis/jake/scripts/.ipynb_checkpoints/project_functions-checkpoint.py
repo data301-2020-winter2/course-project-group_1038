@@ -37,8 +37,9 @@ import numpy as np
 import seaborn as sns 
 import matplotlib.pyplot as plt
 
-from .. import project_functions # This is called a relative import
-df = project_functions.load_and_process("../../data/raw/Chess-Game-Dataset.csv")
-df
 
-
+def load_process(path):
+    data = pd.read_csv(path).drop(["id", "rated", "white_id", "black_id", "opening_ply"], axis=1)
+    data = data[data['victory_status'] != 'outoftime']
+    data.to_csv('../../data/processed/data.csv')
+    return data
