@@ -6,5 +6,6 @@ import seaborn as sns
 
 def load_process(path):
     data = pd.read_csv(path).drop(["id", "rated", "white_id", "black_id", "opening_ply"], axis=1)
+    data = data[data['victory_status'] != 'outoftime']
     data.to_csv('../../data/processed/data.csv')
     return data
