@@ -38,6 +38,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from .. import project_functions # This is called a relative import
-url = "https://www.kaggle.com/datasnaek/chess"
-df = project_functions.load_and_process("https://www.kaggle.com/datasnaek/chess")
+df = project_functions.load_and_process("../../data/raw/Chess-Game-Dataset.csv")
 df
+
+
