@@ -9,3 +9,5 @@ def load_process(path):
     data = data[data['victory_status'] != 'outoftime']
     data.to_csv('../../data/processed/data.csv')
     return data
+
+def
