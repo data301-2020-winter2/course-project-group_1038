@@ -10,4 +10,8 @@ def load_process(path):
     data.to_csv('../../data/processed/data.csv')
     return data
 
-def
+def hist_plot_openings()
+    fig, ax = plt.subplots()
+    fig.set_size_inches(5,200)
+    openings = sns.histplot(df, y='opening_name', hue='winner', stat='count')
+    return openings
