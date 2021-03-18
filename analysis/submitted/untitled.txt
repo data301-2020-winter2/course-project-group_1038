@@ -1,0 +1,25 @@
+Task 5 Research Analysis
+Research Question: What are the amount of turns in each game for White Winners, Black
+Winners. We also wanted to find out the amount of turns overall for each games. In the future
+we are looking to find an average number of turns for a winning game. This can be shown in the
+Scatterplot shown below.
+It seems that the threshold of turns durastically increases in games that end as a draw, as
+oppopsed to a white winner or a a black winner.
+It also seems that the difference between white and black winning is quite small. I would like to
+research the exact difference in the future.
+In our analyses, we looked into the amount of turns each game, and formulated a histogram
+from the results which can be shown below. The majority of the games consisted of around 40 -
+8 terms, with a steep drop off after that. In the future, I would like to investigate how many
+games ended in a draw after around 150 turns.
+*Research Question: What is the most common victory status? and Why?*
+In our analysis, first we wanted to understand what is the most common victory status.
+Eventually, we would like to determine why that certain status&#39; happen more than others, and
+what could lead to a specific one. Shown in the chat below is a countplot of the 3 victory status&#39;
+from our dataset:
+1. Mate
+2. Resign
+3. Draw
+Shown the above countplot, resign seems to be the most common victory status. It happens in
+almost double the amount of games that mate does. We are not sure why this is. Later in our
+analyses, we are going to see all the different types of openings to a match. This could be a
+possible effect of a victory status.
