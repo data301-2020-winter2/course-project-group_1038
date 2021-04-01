@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pylab as plt 
 import matplotlib.image as mpimg
 
+from collections import defaultdict
 
 #analysis and cleaning
 
@@ -13,7 +14,7 @@ def load_process(path):
     data.to_csv('../../data/processed/data.csv')
     return data
 
-def hist_plot_openings()
+def hist_plot_openings():
     fig, ax = plt.subplots()
     fig.set_size_inches(5,200)
     openings = sns.histplot(df, y='opening_name', hue='winner', stat='count')
@@ -48,6 +49,19 @@ def sort_by_time_taken(df: pd.DataFrame):
     create_time_delta(df)
     df = clean_based_on_time_delta(df)
     df.sort_values(by="dt", ascending=True)
+    
+
+def drop_uncommon_openings(df: pd.DataFrame, threshold: int=2):
+    values = defaultdict(int)
+    
+    for opening in df["opening_eco"]:
+        values[opening] += 1
+    
+    for opening, occurences in values.items():
+        if occurences < threshold:
+            df = df[df["opening_eco"] != opening]
+
+    return df
 
     
     
