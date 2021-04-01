@@ -20,16 +20,15 @@ def hist_plot_openings():
     openings = sns.histplot(df, y='opening_name', hue='winner', stat='count')
     return openings
 
+def remove_out_of_time_games(df: pd.DataFrame):
+    return df[df["victory_status"] != "outoftime"]
+
 def load(path_to_dataframe: str):
     return pd.read_csv(path_to_dataframe)
 
 
 def clean(df: pd.DataFrame, columns_to_drop: list[str]):
     return remove_out_of_time_games(df).drop(columns=columns_to_drop).dropna().reset_index(drop=True)
-
-
-def remove_out_of_time_games(df: pd.DataFrame):
-    return df[df["victory_status"] != "outoftime"]
 
 
 def create_delta(df: pd.DataFrame, name: str, column1: str, column2: str):
