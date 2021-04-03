@@ -5,8 +5,68 @@ import matplotlib.pylab as plt
 import matplotlib.image as mpimg
 
 from collections import defaultdict
+from copy import deepcopy
 
 #analysis and cleaning
+
+class WinCount(defaultdict):
+    def __init__(self) -> None:
+        #self.dict = defaultdict(lambda: defaultdict(int))
+        self.dict = defaultdict(lambda: {"white": 0, "black": 0, "draw": 0})
+        
+    def setup(self, df: pd.DataFrame, name_or_eco: str = "eco") -> None:
+        """
+        sets up the class instance's dict
+        """
+        if (name_or_eco := name_or_eco.lower()) not in ("eco", "name"):
+                raise Exception(f"name_or_eco received invalid argument: {name_or_eco}")
+                
+        for _, row in df.iterrows():
+            self.dict[row[f"opening_{name_or_eco}"]][row["winner"]] += 1
+        
+    def totals(self) -> defaultdict:
+        """
+        gathers white, black, and draw values and retunrns a {opening: total_wins} dict
+        """
+        d = defaultdict(int)
+        for item, value in self.dict.items():
+            for _, _value in value.items():
+                d[item] += _value
+        return d
+    
+    def get_dict_with_winner(self, winner: str) -> defaultdict:
+        """
+        returns winner specific dict
+        """
+        if (winner := winner.lower()) not in ("white", "black", "draw"):
+                raise Exception(f"winner received invalid argument: {winner}")
+                
+        d = defaultdict(int)
+        for item, value in self.dict:
+            d["item"] = value[winner]
+            
+        return d
+    
+    @staticmethod
+    def sieve_dict_with_winner(winner_dict: defaultdict, threshold: int):
+        """
+        takes in winner specific dict ei: white = {opening: wins} and returns the dict with wins above or equal to the threshold
+        """
+        for item, value in winner_dict.items():
+            if value < threshold:
+                del winner_dict[item]
+        return winner_dict
+    
+    def sieve(self, threshold: int) -> defaultdict:
+        """
+        returns a copy of the WinCount instance's totals with win occurences above (or equal) to the threshold
+        """
+        d = deepcopy(self.dict)
+        totals = self.totals()
+        for item, value in totals.items():
+            if value < threshold:
+                del d[item]
+        return d
 
 def load_process(path):
     data = pd.read_csv(path).drop(["id", "rated", "white_id", "black_id", "opening_ply"], axis=1)
@@ -48,19 +108,3 @@ def sort_by_time_taken(df: pd.DataFrame):
     create_time_delta(df)
     df = clean_based_on_time_delta(df)
     df.sort_values(by="dt", ascending=True)
-    
-
-def drop_uncommon_openings(df: pd.DataFrame, threshold: int=2):
-    values = defaultdict(int)
-    
-    for opening in df["opening_eco"]:
-        values[opening] += 1
-    
-    for opening, occurences in values.items():
-        if occurences < threshold:
-            df = df[df["opening_eco"] != opening]
-
-    return df
-
-    
-    
