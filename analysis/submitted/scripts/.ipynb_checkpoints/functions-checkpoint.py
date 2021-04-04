@@ -23,18 +23,19 @@ class WinCount(defaultdict):
                 
         for _, row in df.iterrows():
             self.dict[row[f"opening_{name_or_eco}"]][row["winner"]] += 1
-        
-    def totals(self) -> defaultdict:
+    
+    @staticmethod
+    def totals(_dict: defaultdict) -> defaultdict:
         """
         gathers white, black, and draw values and retunrns a {opening: total_wins} dict
         """
         d = defaultdict(int)
-        for item, value in self.dict.items():
+        for item, value in _dict.items():
             for _, _value in value.items():
                 d[item] += _value
         return d
     
-    def get_dict_with_winner(self, winner: str) -> defaultdict:
+    def create_winner_specific_dict(self, winner: str) -> defaultdict:
         """
         returns winner specific dict
         """
@@ -42,27 +43,28 @@ class WinCount(defaultdict):
                 raise Exception(f"winner received invalid argument: {winner}")
                 
         d = defaultdict(int)
-        for item, value in self.dict:
-            d["item"] = value[winner]
+        for item, value in self.dict.items():
+            d[item] = value[winner]
             
         return d
     
     @staticmethod
-    def sieve_dict_with_winner(winner_dict: defaultdict, threshold: int):
+    def sieve_winner_specific_dict(winner_dict: defaultdict, threshold: int):
         """
         takes in winner specific dict ei: white = {opening: wins} and returns the dict with wins above or equal to the threshold
         """
+        d = deepcopy(winner_dict)
         for item, value in winner_dict.items():
             if value < threshold:
-                del winner_dict[item]
-        return winner_dict
+                del d[item]
+        return d
     
     def sieve(self, threshold: int) -> defaultdict:
         """
         returns a copy of the WinCount instance's totals with win occurences above (or equal) to the threshold
         """
         d = deepcopy(self.dict)
-        totals = self.totals()
+        totals = self.totals(self.dict)
         for item, value in totals.items():
             if value < threshold:
                 del d[item]
