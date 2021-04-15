@@ -5,7 +5,7 @@ Let's see if we can learn something cool about chess!!!!! :D
 
 ## Tableau Dashboard
 
-Have a gander at our [tableau dashboard](https://us-west-2b.online.tableau.com/#/site/data301/workbooks/346956/views) and our investigation into online chess trends 
+Have a gander at our [tableau dashboard](https://us-west-2b.online.tableau.com/#/site/data301/workbooks/346956/views) and our investigation into online chess trends.
 
 ## Milestones
 
