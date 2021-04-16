@@ -7,6 +7,10 @@ Let's see if we can learn something cool about chess!!!!! :D
 
 Have a gander at our [tableau dashboard](https://us-west-2b.online.tableau.com/#/site/data301/workbooks/346956/views) and our investigation into online chess trends.
 
+## Presentation
+
+Here is the link to our video presentation of our dashboard. https://www.youtube.com/watch?v=aXP1i5Dg910
+
 ## Milestones
 
 Details for Milestone are available on Canvas (left sidebar, Course Project) or [here](https://firas.moosvi.com/courses/data301/project/milestone01.html).
